@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --nude-bg-1: #F5F0E6;
+    --nude-bg-2: #EFE6DB;
+    --nude-bg-3: #E9DDD0;
+    --nude-cream: #FFFFFF;
+    --nude-mid: #D6C7B8;
+    --nude-dark: #6B4B3B;
+    --text-color: #1B1B1B;
+    --card-radius: 24px;
+    --card-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.04);
+}
+
+/* reset already declared above */
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--nude-bg-1);
+    color: var(--text-color);
+    padding: 28px 26px 48px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 36px;
+    background: transparent;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+header h1 {
+    font-size: 28px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: var(--nude-dark);
+}
+
+
+main 
+{ flex: 1; 
+display:flex; 
+align-items:center; 
+justify-content:center; 
+padding-top: 0; 
+}
+
+.movie-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 24rem;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+/* remove decorative background accents for neutral palette */
+.movie-section::before{ display:none; }
+
+.movie-card {
+    width: 20%;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    background: var(--nude-cream);
+    padding: 0;
+    box-shadow: var(--card-shadow);
+    transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms, border;
+    position: relative;
+    cursor: pointer;
+}
+
+.movie-card:hover{
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 36px 80px -12px rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.movie-card > div:first-child{ width: 100%; display:block; }
+
+.movie-card img{
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-details{
+    padding: 36px;
+    background: #FFF;
+    backdrop-filter: none;
+    color: var(--text-color);
+    min-height: 260px;
+}
+
+.movie-details h2{
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--nude-dark);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.movie-specifics{ list-style:none; margin-bottom:12px; }
+.movie-specifics li{ display:inline-block; margin-right:12px; color: var(--nude-dark); font-size:14px; }
+
+.movie-details p{
+    font-size:17px;
+    color: #3a2b26;
+    line-height:1.6;
+    max-height: 120px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.button-container{ display:flex; gap:12px; }
+
+.watch-online-btn{
+    background: var(--nude-dark);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.watch-online-btn:hover{
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 22px 56px rgba(0,0,0,0.14);
+}
+
+/* Active state */
+.watch-online-btn:active{ background: #3b2b26; color:#fff; }
+
+footer{ margin-top:36px; text-align:center; color: #9b7a86; font-size:24px; }
+
+/* ensure images don't produce gaps */
+img{ display:block; }
+
+/* small utility */
+.pill { border-radius: 999px; }
