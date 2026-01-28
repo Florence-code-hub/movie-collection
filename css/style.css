@@ -37,13 +37,11 @@ header {
     justify-content: space-between;
     padding: 18px 36px;
     background: transparent;
-    position: sticky;
-    top: 0;
-    z-index: 20;
+   
 }
 
 header h1 {
-    font-size: 28px;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
     letter-spacing: 0.5px;
     font-weight: 600;
     color: var(--nude-dark);
@@ -94,9 +92,11 @@ padding-top: 0;
 
 .movie-card img{
     width: 100%;
-    height: 480px;
+    height: clamp(220px, 40vh, 480px);
     object-fit: cover;
     display: block;
+    /* ensure alt/placeholder text scales on image failure */
+    font-size: clamp(12px, 1.2vw, 16px);
 }
 
 .movie-details{
@@ -108,11 +108,13 @@ padding-top: 0;
 }
 
 .movie-details h2{
-    font-size: 26px;
+    font-size: clamp(18px, 1.6rem + 0.8vw, 32px);
     font-weight: 600;
     color: var(--nude-dark);
     margin-bottom: 10px;
     letter-spacing: 0.5px;
+    line-height: 1.08;
+    word-break: break-word;
 }
 
 .movie-specifics{ list-style:none; margin-bottom:12px; }
@@ -150,10 +152,41 @@ padding-top: 0;
 /* Active state */
 .watch-online-btn:active{ background: #3b2b26; color:#fff; }
 
-footer{ margin-top:36px; text-align:center; color: #9b7a86; font-size:24px; }
+footer{ margin-top:36px; text-align:center; color: #9b7a86; font-size:32px; }
+
+/* make footer text responsive */
+footer{ font-size: clamp(0.9rem, 1.6vw, 2rem); }
 
 /* ensure images don't produce gaps */
 img{ display:block; }
 
 /* small utility */
 .pill { border-radius: 999px; }
+
+/* Responsive: stack cards vertically on small screens */
+@media (max-width: 768px) {
+    .movie-section {
+        display: block;
+        padding: 16px 6vw;
+        gap: 18px;
+    }
+
+    .movie-card {
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    .movie-card img {
+        height: clamp(200px, 36vh, 360px);
+    }
+
+    .movie-details {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .movie-details h2 { font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
+    .movie-details p { font-size: clamp(0.95rem, 1.6vw, 1rem); max-height: 120px; }
+}
