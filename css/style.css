@@ -1,0 +1,93 @@
+
+/* Basic CSS for html structure */
+
+
+.movie-section{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+
+.movie-card{
+  width: 250px;
+  box-shadow: 1px 1px 7px gray;
+  border-radius: 7px;
+  padding: 12px 5px 80px;
+  background-color: white;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+
+.movie-card:hover{
+  transform: scale(1.04);
+}  
+
+
+
+
+
+
+
+
+
+/* Optional Css for Collaborator, Open to changes */
+
+
+/* .movie-specifics{
+  display: flex;
+  gap: 95px;
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  font-weight: 700;
+}
+
+
+.watch-online-btn{
+ position: absolute;
+ bottom: 20px;
+ left: 16px;
+ background-color: #060606;
+ color: white;
+ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+ font-weight: 700;
+ font-size: 15px;
+ padding: 12px 60px;
+ border: none;
+ border-radius: 5px;
+ transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+.watch-online-btn:hover{
+  background-color: rgb(184, 180, 180);
+  color: black;
+}
+
+
+
+.watch-online-btn:active{
+  background-color: white;
+  color: black;
+}
+
+
+
+@media (max-width: 1024px){
+  .movie-section{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+@media (max-width: 600px){
+  .movie-section{
+    grid-template-columns: 1fr;
+  }
+} */
+
+
