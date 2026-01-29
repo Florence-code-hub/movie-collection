@@ -31,3 +31,18 @@ fetch('js/data/movies.json')
 
   .catch(err => console.error("Failed to load movies:", err));
 
+// Equalize card heights so all cards match the tallest and show full details
+function equalizeCardHeights() {
+  const cards = Array.from(document.querySelectorAll('.movie-card'));
+  if (!cards.length) return;
+  // reset heights
+  cards.forEach(c => c.style.height = 'auto');
+  // compute max height
+  const maxH = cards.reduce((max, c) => Math.max(max, c.scrollHeight), 0);
+  // apply max height
+  cards.forEach(c => c.style.height = maxH + 'px');
+}
+
+window.addEventListener('load', () => setTimeout(equalizeCardHeights, 50));
+window.addEventListener('resize', () => setTimeout(equalizeCardHeights, 100));
+
