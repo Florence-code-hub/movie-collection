@@ -17,7 +17,6 @@
     --card-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.04);
 }
 
-/* reset already declared above */
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
@@ -37,13 +36,11 @@ header {
     justify-content: space-between;
     padding: 18px 36px;
     background: transparent;
-    position: sticky;
-    top: 0;
-    z-index: 20;
+   
 }
 
 header h1 {
-    font-size: 28px;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
     letter-spacing: 0.5px;
     font-weight: 600;
     color: var(--nude-dark);
@@ -60,20 +57,22 @@ padding-top: 0;
 
 .movie-section {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 24rem;
-    position: relative;
-    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
     gap: 32px;
+    padding: 2rem 2rem;
+    position: relative;
+    align-items: stretch;
 }
 
-/* remove decorative background accents for neutral palette */
 .movie-section::before{ display:none; }
 
 .movie-card {
-    width: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     border-radius: var(--card-radius);
     overflow: hidden;
     background: var(--nude-cream);
@@ -94,9 +93,11 @@ padding-top: 0;
 
 .movie-card img{
     width: 100%;
-    height: 480px;
+    height: clamp(100px, 24vh, 300px);
     object-fit: cover;
     display: block;
+    /* ensure alt/placeholder text scales on image failure */
+    font-size: clamp(12px, 1.2vw, 16px);
 }
 
 .movie-details{
@@ -104,15 +105,20 @@ padding-top: 0;
     background: #FFF;
     backdrop-filter: none;
     color: var(--text-color);
-    min-height: 260px;
+    min-height: auto;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .movie-details h2{
-    font-size: 26px;
+    font-size: clamp(18px, 1.6rem + 0.8vw, 32px);
     font-weight: 600;
     color: var(--nude-dark);
     margin-bottom: 10px;
     letter-spacing: 0.5px;
+    line-height: 1.08;
+    word-break: break-word;
 }
 
 .movie-specifics{ list-style:none; margin-bottom:12px; }
@@ -122,8 +128,6 @@ padding-top: 0;
     font-size:17px;
     color: #3a2b26;
     line-height:1.6;
-    max-height: 120px;
-    overflow: hidden;
     margin-bottom: 18px;
 }
 
@@ -150,10 +154,54 @@ padding-top: 0;
 /* Active state */
 .watch-online-btn:active{ background: #3b2b26; color:#fff; }
 
-footer{ margin-top:36px; text-align:center; color: #9b7a86; font-size:24px; }
+footer{ margin-top:36px; text-align:center; color: #9b7a86; font-size:32px; }
+
+/* make footer text responsive */
+footer{ font-size: clamp(0.9rem, 1.6vw, 2rem); }
 
 /* ensure images don't produce gaps */
 img{ display:block; }
 
 /* small utility */
 .pill { border-radius: 999px; }
+
+/* Responsive: stack cards vertically on small screens */
+@media (max-width: 768px) {
+    .movie-section {
+        grid-template-columns: 1fr;
+        padding: 16px 6vw;
+        gap: 18px;
+    }
+
+    .movie-card {
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    .movie-card img {
+        height: clamp(170px, 34vh, 340px);
+    }
+
+    .movie-details {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .movie-details h2 { font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
+    .movie-details p { font-size: clamp(0.95rem, 1.6vw, 1rem); }
+}
+
+/* ensure details stack correctly on small screens */
+@media (max-width: 480px) {
+    .movie-details { padding: 20px; }
+}
+
+/* Medium devices: two-column layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .movie-section {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem 2rem;
+    }
+}

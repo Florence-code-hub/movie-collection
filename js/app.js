@@ -30,3 +30,4 @@ fetch('js/data/movies.json')
 
 
   .catch(err => console.error("Failed to load movies:", err));
+
